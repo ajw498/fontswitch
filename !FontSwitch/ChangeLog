@@ -1,8 +1,9 @@
-v1.06 5-Oct-02
-Fixed to work with Select boot sequence
+v1.06 17-Dec-02
+Renamed to FontSwitch so it can be used as an addition to the original !Fonts rather than a replacement
 Increased maximum number of groups to 100
 Group names can now be more than 10 chars if on a filing system that supports long filenames
 Released under the GNU GPL
+Recompiled for 32bit compatibility
 
 v1.05 2-Jan-00
 Fixed reading current Font$Path, which appears to have got broken when converting to Desk

@@ -1,6 +1,6 @@
 /*
-	!Fonts
-	© Alex Waugh 1999
+	FontSwitch
+	© Alex Waugh 1998
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -12,28 +12,10 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-	$Log: main.c,v $
-	Revision 1.1  2002/10/05 22:46:37  ajw
-	Increase max groups to 100 and group name length to 256 (if filing system supports it)
-	Fixed to work on select
+	$Id$
+
+	This is not pretty code.
 	
-	Revision 1.5  2000/01/02 13:32:38  AJW
-	Fixed reading current Font$Path, which appears to have got broken when converting to Desk
-	
-	Revision 1.4  1999/12/29 13:48:14  AJW
-	Removed Save automatically menu item as it doesn't work in RO4
-
-	Revision 1.3  1999/11/21 00:29:44  AJW
-	Added Desk_Error2 handling
-	Removed Dialog functions to stop Null reason codes being claimed
-
-	Revision 1.2  1999/11/19 23:17:14  AJW
-	Changed to work with Desk
-
-	Revision 1.1  1999/11/17 13:52:31  AJW
-	Initial revision
-
-
 */
 
 #include "Desk/WimpSWIs.h"
@@ -62,7 +44,7 @@
 #include <string.h>
 
 #define max_NUMBER_OF_GROUPS 100
-#define VERSION "1.06 (5-Oct-02)"
+#define VERSION "1.06 (17-Dec-02)"
 
 #define menuitem_INFO 0
 #define menuitem_HELP 1
@@ -136,10 +118,10 @@ Desk_bool ReadDirs(void)
 	int next;
 	numberofgroups=1;
 	strcpy(directories[0].name,"ROM Fonts");
-	Desk_Error2_CheckOS(Desk_SWI(7,5,Desk_SWI_OS_GBPB,9,"<Fonts$Dir>.Groups",buffer,1,0,256,NULL,NULL,NULL,NULL,NULL,&next));
+	Desk_Error2_CheckOS(Desk_SWI(7,5,Desk_SWI_OS_GBPB,9,"<FontSwitch$Dir>.Groups",buffer,1,0,256,NULL,NULL,NULL,NULL,NULL,&next));
 	while (next!=-1 && numberofgroups<max_NUMBER_OF_GROUPS) {
 		strcpy(directories[numberofgroups++].name,buffer);
-		Desk_Error2_CheckOS(Desk_SWI(7,5,Desk_SWI_OS_GBPB,9,"<Fonts$Dir>.Groups",buffer,1,next,256,NULL,NULL,NULL,NULL,NULL,&next));
+		Desk_Error2_CheckOS(Desk_SWI(7,5,Desk_SWI_OS_GBPB,9,"<FontSwitch$Dir>.Groups",buffer,1,next,256,NULL,NULL,NULL,NULL,NULL,&next));
 	}
 	Desk_Window_SetExtent(window,0,-84*numberofgroups-16,448,0);
 	Desk_Window_ForceRedraw(window,0,-99999,99999,0);
@@ -151,7 +133,7 @@ Desk_bool OptionClick(Desk_event_pollblock *block, void *r)
     char command[256];
 	if (block->data.mouse.icon % 3 !=0) return(Desk_FALSE);
     if (block->data.mouse.button.data.menu==1) return(Desk_FALSE);
-	if (Desk_Icon_GetSelect(window,block->data.mouse.icon)) strcpy(command,"FontInstall Fonts:"); else strcpy(command,"FontRemove Fonts:");
+	if (Desk_Icon_GetSelect(window,block->data.mouse.icon)) strcpy(command,"FontInstall FontSwitch:"); else strcpy(command,"FontRemove FontSwtich:");
 	strcat(command,directories[block->data.mouse.icon/3].name);
 	strcat(command,".");
 	Desk_Hourglass_On();
@@ -180,7 +162,7 @@ Desk_bool DirClick(Desk_event_pollblock *block, void *r)
 	if (block->data.mouse.icon==1) {
 		Desk_Wimp_StartTask("Filer_OpenDir Resources:$.Fonts");
 	} else {
-		strcpy(opendir,"Filer_OpenDir Fonts:");
+		strcpy(opendir,"Filer_OpenDir FontSwitch:");
 		strcat(opendir,directories[block->data.mouse.icon/3].name);
 		Desk_Wimp_StartTask(opendir);
 	}
@@ -189,7 +171,7 @@ Desk_bool DirClick(Desk_event_pollblock *block, void *r)
 
 Desk_bool Delete(Desk_event_pollblock *block,void *r)
 {
-	char wipe[256]="Wipe Fonts:";
+	char wipe[256]="Wipe FontSwitch:";
 	int i;
 	Desk_Wimp_CreateMenu((Desk_menu_ptr)-1,0,0);
 	if (numberofgroups<=1) return Desk_TRUE;
@@ -226,7 +208,7 @@ Desk_bool CloseDialog(Desk_event_pollblock *e,void *r)
 
 Desk_bool CreateDir(void)
 {
-	char create[256]="Fonts:";
+	char create[256]="FontSwitch:";
 	int type;
 	if (strcmp(newdir,"")==0) Desk_Error2_HandleText("There must be a name to give to the new directory");
 	if (numberofgroups>=max_NUMBER_OF_GROUPS) Desk_Error2_HandleText("You cannot have any more directories");
@@ -269,11 +251,11 @@ Desk_bool SaveChoices(void)
 {
 	FILE *choices;
 	int i;
-	if ((choices=fopen("<Fonts$Dir>.!Boot","w"))==NULL) Desk_Error2_HandleText("Unable to save choices");
-	fprintf(choices,"|!Boot file for !Fonts\n\nSet Fonts$Dir <Obey$Dir>\nSet Fonts$Path <Fonts$Dir>.Groups.\n\nIconSprites <Fonts$Dir>.!Sprites\n\n");
-	for(i=1;i<numberofgroups;i++) if (Desk_Icon_GetSelect(window,i*3)) fprintf(choices,"FontInstall Fonts:%s.\n",directories[i].name);
+	if ((choices=fopen("<FontSwitch$Dir>.!Boot","w"))==NULL) Desk_Error2_HandleText("Unable to save choices");
+	fprintf(choices,"|!Boot file for !FontSwitch\n\nSet FontSwitch$Dir <Obey$Dir>\nSet FontSwitch$Path <FontSwitch$Dir>.Groups.\n\nIconSprites <FontSwitch$Dir>.!Sprites\n\n");
+	for(i=1;i<numberofgroups;i++) if (Desk_Icon_GetSelect(window,i*3)) fprintf(choices,"FontInstall FontSwitch:%s.\n",directories[i].name);
 	fclose(choices);
-	Desk_Wimp_StartTask("SetType <Fonts$Dir>.!Boot Obey");
+	Desk_Wimp_StartTask("SetType <FontSwitch$Dir>.!Boot Obey");
 	changed=Desk_FALSE;
 	return Desk_TRUE;
 }
@@ -282,7 +264,7 @@ void IconBarMenuSelection(int entry, void *r)
 {
 	switch (entry) {
 	  case menuitem_HELP:
-		Desk_Wimp_StartTask("Filer_Run <Fonts$Dir>.!Help");
+		Desk_Wimp_StartTask("Filer_Run <FontSwitch$Dir>.!Help");
 		break;
 	  case menuitem_SAVECHOICES:
 		SaveChoices();
@@ -299,7 +281,7 @@ void ReadFontPath(void)
 	char *path,*buffer=buff;
 	int i;
 	Desk_SWI(5,0,Desk_SWI_OS_ReadVarVal,"Font$Path",buffer,1024,0,0); /*Is Desk's implementation of this broken?*/
-	while((path=strstr(buffer,"Fonts:"))!=NULL) {
+	while((path=strstr(buffer,"FontSwitch:"))!=NULL) {
 		buffer=strtok(path+6,".");
 		for(i=1;i<numberofgroups;i++) if (strcmp(buffer,directories[i].name)==0) Desk_Icon_Select(window,i*3);
 		buffer+=strlen(buffer)+1;
@@ -320,8 +302,8 @@ int main(void)
 {
 	Desk_Error2_HandleAllSignals();
 	Desk_Error2_SetHandler(AJWLib_Error2_ReportFatal);
-	Desk_Resource_Initialise("Fonts");
-	Desk_Event_Initialise("Fonts");
+	Desk_Resource_Initialise("FontSwitch");
+	Desk_Event_Initialise("FontSwitch");
 	Desk_EventMsg_Initialise();
 	Desk_Screen_CacheModeInfo();
 	Desk_EventMsg_Claim(Desk_message_MODECHANGE,Desk_event_ANY,Desk_Handler_ModeChange,NULL);
@@ -331,7 +313,7 @@ int main(void)
 	Desk_Event_Claim(Desk_event_CLOSE,Desk_event_ANY,Desk_event_ANY,Desk_Handler_CloseWindow,NULL);
 	Desk_Event_Claim(Desk_event_REDRAW,Desk_event_ANY,Desk_event_ANY,Desk_Handler_NullRedraw,NULL);
 	Desk_Event_Claim(Desk_event_OPEN,Desk_event_ANY,Desk_event_ANY,Desk_Handler_OpenWindow,NULL);
-	info=AJWLib_Window_CreateInfoWindow("Fonts","Font selection","© Alex Waugh 1998",VERSION);
+	info=AJWLib_Window_CreateInfoWindow("FontSwitch","Font selection","© Alex Waugh 1998",VERSION);
 	window=Desk_Window_Create("Main",Desk_template_TITLEMIN);
 	deletewin=Desk_Window_Create("Delete",Desk_template_TITLEMIN);
 	Desk_Event_Claim(Desk_event_CLICK,deletewin,1,CloseDialog,NULL);
@@ -343,7 +325,7 @@ int main(void)
     submenu=AJWLib_Menu_Create("Name:","",NewMenuSelection,NULL);
     Desk_Menu_MakeWritable(submenu,0,newdir,255,"AA-Za-z0-9");
     Desk_Menu_AddSubMenu(mainmenu,mainmenuitem_NEW,submenu);
-	AJWLib_Icon_FullBarIcon("Fonts","!Fonts",-5,0x10000000);
+	AJWLib_Icon_FullBarIcon("Fonts","!FontSwitch",-5,0x10000000);
 	Desk_Event_Claim(Desk_event_CLICK,Desk_window_ICONBAR,Desk_event_ANY,IconBarClick,NULL);
 	Desk_Event_Claim(Desk_event_CLICK,window,Desk_event_ANY,OptionClick,NULL);
 	Desk_Event_Claim(Desk_event_CLICK,window,Desk_event_ANY,DirClick,NULL);

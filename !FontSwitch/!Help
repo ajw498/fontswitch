@@ -1,8 +1,8 @@
-                        Help file for !Fonts
-                        ~~~~~~~~~~~~~~~~~~~~
-This is a replacement for the standard !Fonts program. It allows the management of large numbers of different fonts, by splitting them into groups. You can then choose which groups are active at any particular time, so you don't have to have excessively long font menus which you have to scroll though just to get to Trinity.Medium.
+                        Help file for FontSwitch
+                        ~~~~~~~~~~~~~~~~~~~~~~~~
+This is an addition to the standard !Fonts program. It allows the management of large numbers of different fonts, by splitting them into groups. You can then choose which groups are active at any particular time, so you don't have to have excessively long font menus which you have to scroll though just to get to Trinity.Medium.
 
-Double click !Fonts to load the frontend; an icon will appear on the iconbar. (Note: you don't have to have the frontend loaded in order to use any fonts, and any if you quit the frontend then any fonts enabled at that time will remain available).
+Double click !FontSwitch to load the frontend; an icon will appear on the iconbar. (Note: you don't have to have the frontend loaded in order to use any fonts, and any if you quit the frontend then any fonts enabled at that time will remain available).
 Click with Select on the iconbar icon to open the main window, which contains a list of available groups. (It is likely that there is only one group to start with; the ROM Fonts group.)
 
 Creating a new group
@@ -12,7 +12,7 @@ The new group will be added to the end of the list (when !Fonts is next loaded t
 
 Adding fonts
 ~~~~~~~~~~~~
-If you wish to add some new fonts to !Fonts then you must decide which group they are to appear in, or create a new group for them.  Then double click on the directory icon next to that group, and a directory display should open, then copy the new fonts to this directory (the new fonts may have been supplied in a !Fonts directory, in which case you will have to shift-double click on that new !Fonts directory to see the new fonts).
+If you wish to add some new fonts to FontSwitch then you must decide which group they are to appear in, or create a new group for them.  Then double click on the directory icon next to that group, and a directory display should open, then copy the new fonts to this directory (the new fonts may have been supplied in a !Fonts directory, in which case you will have to shift-double click on that new !Fonts directory to see the new fonts).
 
 Using a font
 ~~~~~~~~~~~~
@@ -33,5 +33,5 @@ Click menu over the group you wish to delete, then select the Delete directory i
 
 Saving choices
 ~~~~~~~~~~~~~~
-You may wish some fonts to be available all the time.  If this is the case, then select the required groups in the group list window, then click on the Save choices item in the icon bar menu.  Now, as soon as !Fonts is 'seen' by the computer (usually during the boot sequence), all the groups that were ticked when you saved the choices will be available.
+You may wish some fonts to be available all the time.  If this is the case, then select the required groups in the group list window, then click on the Save choices item in the icon bar menu.  Now, as soon as !FontSwitch is 'seen' by the computer, all the groups that were ticked when you saved the choices will be available.
 

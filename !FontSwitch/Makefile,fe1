@@ -1,20 +1,20 @@
 
 
 LIBS	=	\
-		C:AJWLib.o.AJWLib\
-		C:Desk.o.Desk
+		AJWLib:o.AJWLib\
+		Desk:o.Desk
 
 
 OBJECTS	=	main.o
 
-INCLUDE	=	L:
+INCLUDE	=	-IDesk: -IAJWLib:
 
 
-CCFLAGS		=	$(CCEXTRA) -mthrowback -mlibscl -pedantic -ansi -Wall -O2 -I$(INCLUDE)
-LINKFLAGS	=	$(LINKEXTRA)
+CFLAGS		=	-mthrowback -mlibscl -mpoke-function-name -pedantic -ansi -Wall -O2 $(INCLUDE)
+LINKFLAGS	=
 
-CC		=	gcc -c $(CCFLAGS)
-LINK		=	gcc $(CCFLAGS) $(LINKFLAGS)
+CC		=	gcc -c $(CFLAGS)
+LINK		=	gcc $(CFLAGS) $(LINKFLAGS)
 
 
 !RunImage: $(OBJECTS) dir

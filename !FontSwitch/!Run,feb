@@ -1,6 +1,8 @@
 
-Obey <Obey$Dir>.!Boot
-FontInstall
+Set FontSwitch$Dir <Obey$Dir>
+Set FontSwitch$Path <Obey$Dir>.Groups.
 
-If "<Wimp$State>"="desktop" Then WimpSlot -Min 64k -Max 64k
-If "<Wimp$State>"="desktop" Then Run <Fonts$Dir>.!RunImage
+IconSprites <FontSwitch$Dir>.!Sprites
+
+WimpSlot -Min 164k -Max 164k
+Run <FontSwitch$Dir>.!RunImage
