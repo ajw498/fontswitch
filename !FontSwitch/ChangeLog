@@ -1,3 +1,6 @@
+v1.07 23-Jan-03
+Now loads the new Shared Clib correctly from the !Run file 
+
 v1.06 17-Dec-02
 Renamed to FontSwitch so it can be used as an addition to the original !Fonts rather than a replacement
 Increased maximum number of groups to 100

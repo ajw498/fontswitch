@@ -44,7 +44,7 @@
 #include <string.h>
 
 #define max_NUMBER_OF_GROUPS 100
-#define VERSION "1.06 (17-Dec-02)"
+#define VERSION "1.07 (23-Jan-03)"
 
 #define menuitem_INFO 0
 #define menuitem_HELP 1
