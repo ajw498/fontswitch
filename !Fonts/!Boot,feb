@@ -5,4 +5,4 @@ Set Fonts$Path <Fonts$Dir>.Groups.
 
 IconSprites <Fonts$Dir>.!Sprites
 
-FontInstall Fonts:Decorative.
+|FontInstall Fonts:Decorative.
