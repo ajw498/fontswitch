@@ -1,8 +1,0 @@
-|!Boot file for !Fonts
-
-Set Fonts$Dir <Obey$Dir>
-Set Fonts$Path <Fonts$Dir>.Groups.
-
-IconSprites <Fonts$Dir>.!Sprites
-
-|FontInstall Fonts:Decorative.
