@@ -4,5 +4,5 @@ Set FontSwitch$Path <Obey$Dir>.Groups.
 
 IconSprites <FontSwitch$Dir>.!Sprites
 
-WimpSlot -Min 164k -Max 164k
+WimpSlot -Min 128k -Max 128k
 Run <FontSwitch$Dir>.!RunImage
