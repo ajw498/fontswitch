@@ -1,0 +1,3 @@
+Dir <Obey$Dir>
+remove fontswitch/zip
+zip -r -9 fontswitch/zip !FontSwitch Licence -x *CVS* *svn* *.o.*
