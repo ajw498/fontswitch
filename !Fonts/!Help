@@ -1,0 +1,37 @@
+                        Help file for !Fonts
+                        ~~~~~~~~~~~~~~~~~~~~
+This is a replacement for the standard !Fonts program. It allows the management of large numbers of different fonts, by splitting them into groups. You can then choose which groups are active at any particular time, so you don't have to have excessively long font menus which you have to scroll though just to get to Trinity.Medium.
+
+Double click !Fonts to load the frontend; an icon will appear on the iconbar. (Note: you don't have to have the frontend loaded in order to use any fonts, and any if you quit the frontend then any fonts enabled at that time will remain available).
+Click with Select on the iconbar icon to open the main window, which contains a list of available groups. (It is likely that there is only one group to start with; the ROM Fonts group.)
+
+Creating a new group
+~~~~~~~~~~~~~~~~~~~~
+To create a new group, click Menu over the main window.  Move over the New directory item and enter a name for the group.
+The new group will be added to the end of the list (when !Fonts is next loaded then the groups will be in alphabetical order).  You can have upto 100 different groups.
+
+Adding fonts
+~~~~~~~~~~~~
+If you wish to add some new fonts to !Fonts then you must decide which group they are to appear in, or create a new group for them.  Then double click on the directory icon next to that group, and a directory display should open, then copy the new fonts to this directory (the new fonts may have been supplied in a !Fonts directory, in which case you will have to shift-double click on that new !Fonts directory to see the new fonts).
+
+Using a font
+~~~~~~~~~~~~
+If you wish to use a font in a program such as a word processor, then you must enable the group that contains the font that you wish to use. Click Select on the Fonts icon on the iconbar to open the main window. Click select on the option icon to the left of the group that the font you want is in, so that the option icon is ticked (if the icon was already ticked then you do not need to click on it).  The font you want should now be available to use.
+You may double click on the directory icon in the list of groups corresponding to a particular group to see what fonts are in that group.
+
+NOTE: A few badly behaved programs might not recognise that a new font has been made available.  If this is the case then quitting the offending program then reloading it should make it recognise the new font.
+
+
+Removing fonts
+~~~~~~~~~~~~~~
+If you wish to remove some fonts, then you can just double click on the directory icon for the group that the fonts are in, then delete the fonts as you would normally delete a file.  There is no way of recovering deleted fonts, so you should only delete a font if you have another copy of it or you are sure you do not want it anymore.
+
+
+Deleting a group
+~~~~~~~~~~~~~~~~
+Click menu over the group you wish to delete, then select the Delete directory item in the menu.  This will delete all the fonts in that directory, so you will have to confirm that this is what you want to do.
+
+Saving choices
+~~~~~~~~~~~~~~
+You may wish some fonts to be available all the time.  If this is the case, then select the required groups in the group list window, then click on the Save choices item in the icon bar menu.  Now, as soon as !Fonts is 'seen' by the computer (usually during the boot sequence), all the groups that were ticked when you saved the choices will be available.
+

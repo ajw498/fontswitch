@@ -1,0 +1,6 @@
+
+Obey <Obey$Dir>.!Boot
+FontInstall
+
+If "<Wimp$State>"="desktop" Then WimpSlot -Min 64k -Max 64k
+If "<Wimp$State>"="desktop" Then Run <Fonts$Dir>.!RunImage

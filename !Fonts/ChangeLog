@@ -1,0 +1,24 @@
+v1.06 5-Oct-02
+Fixed to work with Select boot sequence
+Increased maximum number of groups to 100
+Group names can now be more than 10 chars if on a filing system that supports long filenames
+Released under the GNU GPL
+
+v1.05 2-Jan-00
+Fixed reading current Font$Path, which appears to have got broken when converting to Desk
+
+v1.04 29-Dec-99
+Removed Save automatically menu item as it doesn't work in RO4 boot sequence
+
+v1.03 21-Nov-99
+Added Desk_Error2 handling
+Removed Dialog functions to stop Null reason codes being claimed
+
+v1.02 19-Nov-99
+Changed to work with Desk
+
+v1.01 22-Aug-98
+I can't remember what I changed
+
+v1.00 Sometime in 1998
+Initial version

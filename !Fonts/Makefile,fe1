@@ -1,0 +1,29 @@
+
+
+LIBS	=	\
+		C:AJWLib.o.AJWLib\
+		C:Desk.o.Desk
+
+
+OBJECTS	=	main.o
+
+INCLUDE	=	L:
+
+
+CCFLAGS		=	$(CCEXTRA) -mthrowback -mlibscl -pedantic -ansi -Wall -O2 -I$(INCLUDE)
+LINKFLAGS	=	$(LINKEXTRA)
+
+CC		=	gcc -c $(CCFLAGS)
+LINK		=	gcc $(CCFLAGS) $(LINKFLAGS)
+
+
+!RunImage: $(OBJECTS) dir
+	$(LINK) -o $@ $(OBJECTS) $(LIBS)
+
+.c.o:
+	$(CC) $< -o $@
+
+dir:
+	cdir Groups
+
+
